@@ -1,0 +1,159 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+    @using (Html.BeginForm("save", "settings", FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        <div class="col-12">
+            <div class="form-group">
+                <label>Site Başlığı</label>
+                @Html.TextBoxFor(x => x.Setting.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Title)
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label>Site Açıklaması</label>
+                @Html.TextAreaFor(x => x.Setting.Description, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.Description)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Site Logosu</label>
+                <input type="file" class="form-control" name="file" value="" />
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Misyon</label>
+                @Html.TextAreaFor(x => x.Setting.Mission, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.Mission)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Vizyon</label>
+                @Html.TextAreaFor(x => x.Setting.Vision, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.Vision)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Kurumsal Değer</label>
+                @Html.TextAreaFor(x => x.Setting.CorporateValue, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.CorporateValue)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Adres</label>
+                @Html.TextAreaFor(x => x.Setting.Address, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.Address)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Telefon 1</label>
+                @Html.TextBoxFor(x => x.Setting.Phone1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Phone1)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Telefon 2</label>
+                @Html.TextBoxFor(x => x.Setting.Phone2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Phone2)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Mail</label>
+                @Html.TextBoxFor(x => x.Setting.Mail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Mail)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Çalışma Saatleri</label>
+                @Html.TextBoxFor(x => x.Setting.WorkHours, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.WorkHours)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Facebook</label>
+                @Html.TextBoxFor(x => x.Setting.Facebook, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Facebook)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Twitter</label>
+                @Html.TextBoxFor(x => x.Setting.Twitter, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Twitter)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Instagram</label>
+                @Html.TextBoxFor(x => x.Setting.Instagram, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.Instagram)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>LinkedIn</label>
+                @Html.TextBoxFor(x => x.Setting.LinkedIn, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.LinkedIn)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Google Maps</label>
+                @Html.TextBoxFor(x => x.Setting.GoogleMaps, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Setting.GoogleMaps)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Head Scripts</label>
+                @Html.TextAreaFor(x => x.Setting.HeadScripts, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.HeadScripts)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Footer Scripts</label>
+                @Html.TextAreaFor(x => x.Setting.FooterScripts, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(x => x.Setting.FooterScripts)
+            </div>
+        </div>
+        <div class="col-12 " style="margin-bottom:250px">
+            <button type="submit" class="btn btn-success w-25">Kaydet</button>
+        </div>
+    }
+
+
+</div>
+
+@section Scripts{
+  <script>
+      $(document).ready(function () {
+          var success = '@TempData["SettingSuccess"]';
+          if (success.length != 0) {
+              alert("Bilgiler başarıyla kaydedildi");
+          }
+      })
+
+    </script>  
+    
+    
+    }

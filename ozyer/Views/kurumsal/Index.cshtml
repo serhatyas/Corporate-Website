@@ -1,0 +1,209 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "sektorDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section title{
+    @Model.Page.Title -
+}
+<section class="visual">
+    <div class="visual-inner  black-overlay-3 parallax"
+         style="background-image:url(/img/brand/aboutimg.jpg) !important" data-stellar-background-ratio="0.55">
+        <div class="centered">
+            <div class="container">
+                <div class="visual-text visual-center">
+                    <h1 class="visual-title visual-sub-title text-white">@Model.Page.Title</h1>
+                    <div class="breadcrumb-block">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"> Anasayfa </a></li>
+                            <li class="breadcrumb-item active"> @Model.Page.Title </li>                           
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/visual/banner of the page -->
+<!-- main content wrapper -->
+<div class="content-wrapper">
+    <section class="content-block portfolio-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-small mb-0 col-md-12">
+                        <div class="img-block border-hover-effect">
+                            <img src="~/img/brand/aboutimg.jpg" alt="images">
+                        </div>
+                    </div>
+                    <section class="content-block">
+                        <div class="container">
+                            <div class="demo-wrapper text-center">
+                                @Html.Raw(Model.Page.PageContent)
+                            </div>
+                            @*<div class="row masonary-block default-gallery">
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/1.png" class="fancybox-thumb fancy-pop" title="Portfolio 12" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/1.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/2.png" class="fancybox-thumb fancy-pop" title="Portfolio 13" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/2.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/3.png" class="fancybox-thumb fancy-pop" title="Portfolio 14" href="img/visual-small-03.jpg"> </a>
+                                <div class="image-wrapper"><img src="~/img/logo/3.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/10.jpg" class="fancybox-thumb fancy-pop" title="Portfolio 15" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/10.jpg" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/4.png" class="fancybox-thumb fancy-pop" title="Portfolio 16" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/4.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/5.png" class="fancybox-thumb fancy-pop" title="Portfolio 17" href="img/visual-small-03.jpg"> </a>
+                                <div class="image-wrapper"><img src="~/img/logo/5.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/6.png" class="fancybox-thumb fancy-pop" title="Portfolio 18" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/6.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/7.png" class="fancybox-thumb fancy-pop" title="Portfolio 19" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="~/img/logo/7.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <figure class="caption-hover-full">
+                                <a data-thumbnail="img/logo/16.png" class="fancybox-thumb fancy-pop" title="Portfolio 20" href="img/visual-small-03.jpg"></a>
+                                <div class="image-wrapper"><img src="img/logo/16.png" alt="images description"></div>
+                            </figure>
+                        </div>
+                    </div>*@
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar-wrap mt-5 mt-lg-0">
+                        <div class="widget-block">
+                            <div class="post-block">
+                                <div class="col-small col-md-12">
+                                    <div class="img-block border-hover-effect">
+                                        <img src="~/uploads/images/ozyer_logo.png" alt="images">
+                                    </div>
+                                </div>
+                                @*<div class="col-small col-md-12">
+                                    <div class="img-block border-hover-effect">
+                                        <img src="~/img/brand/aboutimg.jpg" alt="images">
+                                    </div>
+                                </div>*@
+                            </div>
+                            <div class="accordion-container">
+                                <h4>HAKKIMIZDA</h4>
+                                <div class="widget-block">
+                                    <div id="accordion2" class="panel-icon" role="tablist" aria-multiselectable="true">
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="headingSeven">
+                                                <h5 class="mb-0"><a data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">Vizyon</a></h5>
+                                            </div>
+                                            <div id="collapseSeven" class="collapse show" role="tabpanel" aria-labelledby="headingSeven">
+                                                <div class="card-block">
+                                                    <p>@Model.Setting.Vision</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="headingEight">
+                                                <h5 class="mb-0"><a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseEight" aria-expanded="false" aria-controls="collapseTwo">Misyon</a></h5>
+                                            </div>
+                                            <div id="collapseEight" class="collapse show" role="tabpanel" aria-labelledby="headingEight">
+                                                <div class="card-block">
+                                                    <p>@Model.Setting.Mission</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="headingNine">
+                                                <h5 class="mb-0"><a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">Kurumsal Değer</a></h5>
+                                            </div>
+                                            <div id="collapseNine" class="collapse show" role="tabpanel" aria-labelledby="headingNine">
+                                                <div class="card-block">
+                                                    <p>@Model.Setting.CorporateValue</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="data-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               @foreach (var item in Model.workPartnerList)
+                               {
+
+                                <tr>
+                                    @for (int i = 0; i < 10; i++)
+                                    {
+                                        <th scope="row">@(i+1)</th>
+                                    }
+                                        <td>
+                                            <a href="/projeler/@Model.workPartnerList[i].FriendlyUrl">@Model.workPartnerList[i].Name</a>
+                                        </td>
+                                    </tr>
+                               }
+                            </tbody>
+                        </table>
+                    </div>*@
+
+                        </div>
+                    </div>
+                </div>
+                <section class="content-block pt-0">
+                    <div class="container">
+                        <div class="demo-wrapper">
+                            <h3 class="text-center element-heading">Şirketlerimiz</h3>
+                            <div class="logo-container">
+                                <div class="owl-carousel logo-slide" id="waituk-owl-slide-4">
+                                    @foreach (var item in Model.workPartnerList)
+                                    {
+                                    <div class="slide-item">
+                                        <a href="/projeler/@item.FriendlyUrl"><img src="@item.Logo" alt="@item.Name" title="@item.Name"></a>
+                                    </div>
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+

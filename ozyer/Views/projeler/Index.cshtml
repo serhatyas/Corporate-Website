@@ -1,0 +1,125 @@
+﻿@model ozyer.Models.ServiceModel
+
+@{
+    ViewBag.Title = "sektorDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{
+    @Model.workPartners.Name -
+}
+<section class="visual">
+    <div class="visual-inner portfolio-banner-v1 black-overlay-3 parallax" style="background-image:url(/uploads/images/about.jpg) !important" data-stellar-background-ratio="0.55" >
+        <div class="centered">
+            <div class="container">
+                <div class="visual-text visual-center">
+                    <h1 class="visual-title visual-sub-title text-white">@Model.workPartners.Name</h1>
+                    <div class="breadcrumb-block">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"> Anasayfa </a></li>
+                            <li class="breadcrumb-item"><a href="#"> Projeler </a></li>
+                            <li class="breadcrumb-item active"> @Model.workPartners.Name </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/visual/banner of the page -->
+<!-- main content wrapper -->
+<div class="content-wrapper">
+    <section class="content-block portfolio-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-small mb-0 col-md-12">
+                        <div class="img-block border-hover-effect">
+                            <img src="@Model.workPartners.Image" alt="images">
+                        </div>
+                    </div>
+                    <section class="content-block">
+                        <div class="container">
+                            <div class="demo-wrapper text-center">
+                                @Html.Raw(Model.workPartners.Description).
+                            </div>
+                            <div class="row masonary-block default-gallery">
+                                @foreach (var item in Model.WorkPartnerFileList)
+                                {
+                                    <div class="col-md-6 col-lg-4">
+                                        <figure class="caption-hover-full">
+                                            <a data-thumbnail="@item.Path" class="fancybox-thumb fancy-pop" title="@Model.workPartners.Name" href="@item.Path"></a>
+                                            <div class="image-wrapper"><img src="@item.Path" alt="@Model.workPartners.Name"></div>
+                                        </figure>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar-wrap mt-5 mt-lg-0">
+                        <div class="widget-block">
+                            <div class="post-block">
+
+                                <div class="col-small col-md-12">
+                                    <div class="img-block border-hover-effect">
+                                        <img src="@Model.workPartners.Logo" alt="images">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="post-block">
+
+                                <div class="col-small col-md-12">
+                                    <div class="img-block border-hover-effect">
+                                        <img src="@Model.workPartners.ParticipationsGroups.Logo" alt="images">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-block">
+                                <ul class="content-list info-list">
+                                    <li>
+                                        <b>Website</b>
+                                        <a href="https://@Model.workPartners.WebSite" target="_blank">@Model.workPartners.WebSite</a>
+                                    </li>
+                                    <li>
+                                        <b>Telefon</b>
+                                        <span>@Model.workPartners.Phone</span>
+                                    </li>
+                                    <li>
+                                        <b>Adres</b>
+                                        <span>@Model.workPartners.Address</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widget-block">
+                                <div class="data-table">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Diğer @Model.workPartners.Sectors.Name projeleri</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.workPartnerList)
+                                            {
+                                                <tr>
+                                                    <td><a href="@item.FriendlyUrl">@item.Name</a></td>
+                                                </tr>
+
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

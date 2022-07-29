@@ -1,0 +1,342 @@
+﻿
+@{
+    Layout = null;
+
+    ozyer.Areas.admin.Model.ServiceDB db = new ozyer.Areas.admin.Model.ServiceDB();
+    var settingList = db.Settings.ToList();
+    var setting = new ozyer.Areas.admin.Model.Settings();
+    if (settingList.Count != 0)
+    {
+        setting = db.Settings.ToList().Last();
+    }
+
+}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="@setting.Description">
+    <title>@RenderSection("title",false) @setting.Title</title>
+    <!-- Font Icons -->
+    <link media="all" rel="stylesheet" href="/Content/css/fonts/icomoon/icomoon.css">
+    <link media="all" rel="stylesheet" href="/Content/css/fonts/roxine-font-icon/roxine-font.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/font-awesome/css/font-awesome.css">
+    <!-- /Content/vendors -->
+    <link media="all" rel="stylesheet" href="/Content/vendors/owl-carousel/dist/assets/owl.carousel.min.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/owl-carousel/dist/assets/owl.theme.default.min.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/animate/animate.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/rateyo/jquery.rateyo.css">
+    <link media="all" rel="stylesheet" href="~/Content/vendors/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/fancyBox/source/jquery.fancybox.css">
+    <link media="all" rel="stylesheet" href="/Content/vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.css">
+    <!-- Bootstrap 4 -->
+    <link media="all" rel="stylesheet" href="/Content/css/bootstrap.css">
+    <!-- Rev Slider -->
+    <link rel="stylesheet" type="text/css" href="/Content/vendors/rev-slider/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="/Content/vendors/rev-slider/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="/Content/vendors/rev-slider/revolution/css/navigation.css">
+    <!-- Theme CSS -->
+    <link media="all" rel="stylesheet" href="/Content/css/main.css">
+    <link media="all" rel="stylesheet" href="/Content/css/style.css">
+    <link rel="icon" href="/img/favicon.ico" type="image/png" sizes="16x16">
+    <!-- Custom CSS -->
+    <link media="all" rel="stylesheet" href="/Content/css/construction.css">
+</head>
+
+<body>
+    <!-- main wrapper -->
+    <div id="wrapper">
+        <div class="page-wrapper">
+            <!-- header of the page -->
+
+            <header class="fixed-top main-header" id="waituk-main-header">
+                <div id="nav-section">
+                    <div class="mega-menus top-header">
+                        <nav class="p-static hidden-md-down">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs float-left text-center-sm no-float-sm no-padding">
+                                        <ul class="i-list i-list-i-block i-list-i-block-sm i-list-i-block-no-hover pad-0-sm margin-bottom-0 float-left text-center">
+                                            <li>
+                                                <div class="dropdown mini-nav">
+                                                    <a href="tel:@setting.Phone1" class="nav-link"><span class="custom-icon-phone-ring"></span> @setting.Phone1</a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a href="mailto:@setting.Mail" class="nav-link"><span class="custom-icon-email1"></span> @setting.Mail</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 float-right hidden-xs pad-right-0">
+                                        <ul class="i-list i-list-i-block i-list-i-block-sm i-list-i-block-no-hover pad-0-sm margin-bottom-0 float-right">
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a target="_blank" href="@setting.Facebook"><span class="icon-facebook"></span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a target="_blank" href="@setting.Twitter"><span class="icon-twitter"></span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a target="_blank" href="@setting.Instagram"><span class="icon-instagram"></span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a target="_blank" href="@setting.LinkedIn"><span class="icon-linkedin"></span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown mini-nav mini-nav-no-bg-hover">
+                                                    <a href="/"> TR </a>
+                                                    <ul class="dropdown-menu pad-small no-border-radius hidden-xs fadeIn">
+                                                        <li><a href="/" class="pad-narrow"> TR </a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="bottom-header container mega-menus" id="mega-menus">
+                        <nav class="navbar navbar-toggleable-md no-border-radius no-margin mega-menu-multiple" id="navbar-inner-container">
+                            <form action="mega-menu-5.html" id="top-search" class="no-margin top-search">
+                                <div class="form-group no-margin">
+                                    <input class="form-control no-border" id="search_term" name="search_term" placeholder="Type & Press Enter" type="text">
+                                </div>
+                            </form>
+                            <button type="button" class="navbar-toggler navbar-toggler-left" data-toggle="collapse" data-target="#mega-menu">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <a class="navbar-brand mr-auto m-sm-auto" href="/"> <img src="@setting.Logo" alt="roxine"> </a>
+                            <div class="collapse navbar-collapse flex-row-reverse" id="mega-menu">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" href="/" data-title="Home"> Anasayfa </a>
+                                    </li>
+                                    <li class="dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="/" data-title="Home"> Kurumsal </a>
+                                        <ul class="dropdown-menu  no-border-radius">
+                                            @foreach (var item in db.Pages.Where(x => x.IsDeleted == false && x.IsPassive == false).ToList())
+                                            {
+                                                <li onclick="window.location.href='/kurumsal/@item.FriendlyUrl'" class="dropdown dropdown-right dropdown-parent">
+                                                    <a class="sub-marker" href="/kurumsal/@item.FriendlyUrl"><i class="icon-ios-more icn-right"></i>@item.Title</a>
+                                                </li>
+                                            }
+                                            <li> <a target="_blank" href="https://e-sirket.mkk.com.tr/esir/Dashboard.jsp#/sirketbilgileri/12381">BİLGİ TOPLUM HİZMETLERİ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="index.html" data-title="Home"> SEKTÖRLER </a>
+                                        <ul class="dropdown-menu no-border-radius">
+                                            @foreach (var sector in db.Sectors.Where(x => x.IsPassive == false).ToList())
+                                            {
+                                                var projeList = db.WorkPartners.Where(x => x.SectorId == sector.Id && x.IsPassive == false).ToList();
+                                                if (projeList.Count != 0)
+                                                {
+                                                    <li class="dropdown dropdown-left dropdown-parent">
+                                                        <a class="sub-marker" href="#"> @sector.Name <i class="icon-ios-more icn-right"></i></a>
+                                                        <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                                            @foreach (var item in projeList)
+                                                            {
+                                                                <li><a href="/projeler/@item.FriendlyUrl"> @item.Name </a></li>
+
+                                                            }
+
+                                                        </ul>
+                                                    </li>
+                                                }
+
+                                            }
+
+
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="index.html" data-title="Home"> İştirakler </a>
+                                        <ul class="dropdown-menu no-border-radius">
+                                            @foreach (var participations in db.ParticipationsGroups.ToList())
+                                            {
+                                                <li class="dropdown dropdown-left dropdown-parent">
+                                                    <a class="sub-marker" href="#"> @participations.Name <i class="icon-ios-more icn-right"></i></a>
+                                                    <ul class="dropdown-menu dropdown-menu-indent-sm no-border-radius">
+                                                        @foreach (var sector in db.Sectors.Where(x => x.IsPassive == false).ToList())
+                                                        {
+                                                            var partSectors = db.Participations.FirstOrDefault(x => x.ParticipationsGroupId == participations.Id && x.SectorId == sector.Id && x.IsDeleted==false && x.IsPassive==false);
+                                                            if (partSectors != null)
+                                                            {
+                                                                <li><a href="/istirakler/@partSectors.FriendlyUrl">@sector.Name</a></li>
+
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/blog"> BLOG </a>
+                                    </li>
+                                    <li class="dropdown right-dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" href="/iletisim/index" data-title="Home"> İLETİŞİM </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            @*<div class="navbar-pos-search">
+                                <a href="#" class="x-search x-search-trigger navbar-link"><i class="custom-icon-search"></i></a>
+                                <a href="#" class="x-search icon-close-round navbar-link"><i class="icon-line-cross"></i></a>
+                            </div>*@
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!--/header of the page -->
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+        <!-- footer of the pagse -->
+
+        <footer class="footer footer-v1 footer-v2">
+            <div class="content-block footer-main pb-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="footer-logo mt-2">
+                                <img src="@setting.Logo" alt="image-description">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="waituk_newsletter-form newsletter-v1 mt-2">
+                                <form action="#" method="post">
+                                    <fieldset class="clearfix">
+                                        <div class="form-group input-holder">
+                                            <input type="email" class="form-control" placeholder="E-mail Adresi">
+                                            <a target="_blank" href="/iletisim/index" class="btn"><i class="fa fa-send"></i></a>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="my-4">
+                                <p>İş başvurusu ve fikir ortaklığı için bizimle iletişime geçin.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>Sektörler</h4>
+                            <div class="footer-nav">
+                                <ul>
+                                    <li><a href="#">Enerji</a></li>
+                                    <li><a href="#">Kuyum</a></li>
+                                    <li><a href="#">Turizm</a></li>
+                                    <li><a href="#">İnşaat</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>İştiraklar</h4>
+                            <div class="footer-nav">
+                                <ul>
+                                    <li><a href="#">Hanel Grup</a></li>
+                                    <li><a href="#">Melden Grup</a></li>
+                                    <li><a href="#">Fabay Grup</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4>Sayfalar</h4>
+                            <div class="footer-nav">
+                                <ul>
+                                    <li><a href="#">Anasayfa</a></li>
+                                    <li><a href="#">Hakkımızda</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">İletişim</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 pb-3">
+                                <p>Copyright 2021 - Ozyer Group </p>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="social-network with-text">
+                                    <li><a target="_blank" href="@setting.Facebook"><span class="icon-facebook"></span></a></li>
+                                    <li><a target="_blank" href="@setting.Twitter"><span class="icon-twitter"></span></a></li>
+                                    <li><a target="_blank" href="@setting.Instagram"><span class="icon-instagram"></span></a></li>
+                                    <li><a target="_blank" href="@setting.LinkedIn"><span class="icon-linkedin"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--/footer of the page -->
+    </div>
+    <!-- search form wrapper -->
+    <div class="search-form-wrapper bg-secondary white-text">
+        <a href="#" class="nav-search-link close"><span class="icon-android-close"></span></a>
+        <div class="holder">
+            <input type="search" class="form-control form-control-v1" placeholder="Enter Your Search">
+            <button type="submit"><span class="custom-icon-search"></span></button>
+        </div>
+    </div>
+    <a href="#" class="section-scroll" id="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    <!-- jquery library -->
+    <script src="/Content/vendors/jquery/jquery-2.1.4.min.js"></script>
+    @RenderSection("scripts",false)
+    <!-- external scripts -->
+    <script src="/Content/vendors/tether/dist/js/tether.min.js"></script>
+    <script src="/Content/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Content/vendors/stellar/jquery.stellar.min.js"></script>
+    <script src="/Content/vendors/isotope/javascripts/isotope.pkgd.min.js"></script>
+    <script src="/Content/vendors/isotope/javascripts/packery-mode.pkgd.js"></script>
+    <script src="/Content/vendors/owl-carousel/dist/owl.carousel.js"></script>
+    <script src="/Content/vendors/waypoint/waypoints.min.js"></script>
+    <script src="/Content/vendors/counter-up/jquery.counterup.min.js"></script>
+    <script src="/Content/vendors/fancyBox/source/jquery.fancybox.pack.js"></script>
+    <script src="/Content/vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.js"></script>
+    <script src="/Content/vendors/image-stretcher-master/image-stretcher.js"></script>
+    <script src="/Content/vendors/wow/wow.min.js"></script>
+    <script src="/Content/vendors/rateyo/jquery.rateyo.js"></script>
+    <script src="/Content/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="/Content/vendors/bootstrap-slider-master/src/js/bootstrap-slider.js"></script>
+    <script src="/Content/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/Content/js/mega-menu.js"></script>
+    <!-- custom jquery script -->
+    <script src="/Content/js/jquery.main.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <!-- SNOW ADD ON -->
+    <script type="text/javascript" src="/Content/vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
+    <!-- revolutions slider script -->
+    <script src="/Content/js/revolution.js"></script>
+</body>
+
+</html>

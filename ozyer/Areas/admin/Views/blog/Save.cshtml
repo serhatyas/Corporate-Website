@@ -1,0 +1,107 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="col-12">
+        <form enctype="multipart/form-data" method="post" action="/admin/blog/save" class="row">
+            @if (Model != null && Model.Blog != null && Model.Blog.Id != null)
+            {
+                @Html.HiddenFor(x => x.Blog.Id)
+
+            }
+            <div class="col-8">
+                <div class="form-group">
+                    <label>Blog Kısa Açıklama İçeriği</label>
+                    @Html.TextAreaFor(x => x.Blog.ShortDescription, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Blog İçeriği</label>
+                    @Html.TextAreaFor(x => x.Blog.Description, new { @class = "form-control", id = "editor" })
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Blog Adı</label>
+                    @Html.TextBoxFor(x => x.Blog.Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Yazar
+                    </label>
+                    @Html.TextBoxFor(x => x.Blog.Author, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Tarih
+                    </label>
+                    @if (Model.Blog != null && Model.Blog.Date != null)
+                    {
+                        @Html.TextBoxFor(x => x.Blog.Date, new { @class = "form-control", type = "date", @Value = Model.Blog.Date.Value.ToString("yyyy-MM-dd") })
+
+                    }
+                    else
+                    {
+                        @Html.TextBoxFor(x => x.Blog.Date, new { @class = "form-control", type = "date" })
+
+                    }
+                </div>
+                <div class="form-group">
+                    <label>
+                        Fotoğraf
+                    </label>
+                    <input type="file" name="file" value="" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('editor', {
+            toolbar: 'Full',
+            toolbar_Full:
+                [
+                    { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                    { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                    { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'] },
+                    {
+                        name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                            'HiddenField']
+                    },
+                    '/',
+                    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+                    {
+                        name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv',
+                            '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+                    },
+                    { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                    { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'] },
+                    '/',
+                    { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                    { name: 'colors', items: ['TextColor', 'BGColor'] },
+                    { name: 'tools', items: ['Maximize', 'ShowBlocks', '-', 'About'] }
+                ],
+            extraPlugins: 'iframe',
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            filebrowserBrowseUrl: 'assets/plugins/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: 'assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+        });
+
+
+    </script>
+
+
+}

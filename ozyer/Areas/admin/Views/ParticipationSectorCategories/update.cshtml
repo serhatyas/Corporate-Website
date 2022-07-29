@@ -1,0 +1,27 @@
+﻿@model ozyer.Areas.admin.Model.ParticipationSectorCategories
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <form action="/admin/ParticipationSectorCategories/update" method="post" class="col-md-12">
+        @Html.HiddenFor(x=>x.Id)
+        <div class="col-6">
+            <div class="form-group">
+                <label>Kategori Adı</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name)
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" type="submit">Kaydet</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>

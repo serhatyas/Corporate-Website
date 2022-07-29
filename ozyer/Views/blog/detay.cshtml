@@ -1,0 +1,71 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{
+    @Model.Blog.Name -
+    }
+<section class="visual">
+    <div class="visual-inner about-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+        <div class="centered">
+            <div class="container">
+                <div class="visual-text visual-center">
+                    <h1 class="visual-title visual-sub-title">Blog</h1>
+                    <div class="breadcrumb-block">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"> Anasayfa </a></li>
+                            <li class="breadcrumb-item"><a href="/blog"> Blog </a></li>
+                            <li class="breadcrumb-item active"> @Model.Blog.Name </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="content-wrapper">
+    <section class="content-block">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-12 less-wide">
+                    <div class="blog-holder">
+                        <article class="blog-article">
+                            <div class="blog-title text-center pb-5">
+                                <h1>@Model.Blog.Name</h1>
+                                <div class="blog-lists border-0">
+                                    <ul class="blog-list-items">
+                                        <li>Yazar: <a href="#">@Model.Blog.Author</a></li>
+                                        <li>
+                                            <time datetime="@Model.Blog.Date.Value">@Model.Blog.Date.Value.ToString("dd") <span>@Model.Blog.Date.Value.ToString("MMMM")</span> </time>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-desc pt-5">
+                                <div class="blog-img">
+                                    <div class="image-wrap">
+                                        <figure class="">
+                                            <img src="@Model.Blog.Photo" alt="images description">
+                                        </figure>
+                                    </div>
+                                </div>
+                              @Html.Raw(Model.Blog.Description)
+                                <div class="blog-share mt-5">
+                                    <ul class="social-network with-text">
+                                        <li><strong>Paylaş :</strong></li>
+                                        <li><a target="_blank" href="https://facebook.com"><span class="icon-facebook"></span> Facebook</a></li>
+                                        <li><a target="_blank" href="https://twitter.com"><span class="icon-twitter"></span> Twitter</a></li>
+                                        <li><a target="_blank" href="https://google.com"><span class="icon-google-plus"></span> Google</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

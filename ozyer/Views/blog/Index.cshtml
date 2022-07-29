@@ -1,0 +1,75 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section title{
+   Blog -
+}
+<!-- visual/banner of the page -->
+<section class="visual">
+    <div class="visual-inner about-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+        <div class="centered">
+            <div class="container">
+                <div class="visual-text visual-center">
+                    <h1 class="visual-title visual-sub-title">Blog</h1>
+                    <div class="breadcrumb-block">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"> Anasayfa </a></li>
+                            <li class="breadcrumb-item active"> Blog </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/visual/banner of the page -->
+<!-- main content wrapper -->
+<div class="content-wrapper">
+    <section class="content-block">
+        <div class="container">
+            <div class="row multiple-row">
+                @foreach (var item in Model.BlogList)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="col-wrap">
+                            <div class="post-grid reverse-grid reverse-grid">
+                                <div class="img-block post-img">
+                                    <a href="/blog/@item.FriendlyUrl"><img src="@item.Photo" alt="@item.Name"></a>
+                                    <time class="post-date" datetime="@item.Date">@item.Date.Value.ToString("dd MMMM")</time>
+                                </div>
+                                <div class="post-text-block bg-gray-light">
+                                    <strong class="content-title mb-0"><a href="/blog/@item.FriendlyUrl">@item.Name</a></strong>
+                                    <p>@item.ShortDescription</p>
+                                    <div class="post-meta clearfix">
+                                        <div class="post-link-holder">
+                                            <a href="/blog/@item.FriendlyUrl">Devamı <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+                                        </div>
+                                        <div class="post-social text-right">
+                                            <ul class="social-network social-small">
+                                                <li><a target="_blank" href="https://facebook.com.tr"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                <li><a target="_blank" href="https://twitter.com.tr"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            @if (Model.BlogList.Count > 10)
+            {
+                <div class="btn-container full-width-btn top-space">
+                    <a href="javascript:void(0)" class="btn btn-black">DAHA FAZLASINI GÖR<span class="c-ripple js-ripple"><span class="c-ripple__circle"></span></span></a>
+                </div>
+            }
+
+        </div>
+    </section>
+</div>
+<!--/main content wrapper -->

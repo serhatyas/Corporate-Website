@@ -1,0 +1,183 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="visual">
+    <div class="visual-inner about-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+        <div class="centered">
+            <div class="container">
+                <div class="visual-text visual-center">
+                    <h1 class="visual-title visual-sub-title">İletişim</h1>
+                    <div class="breadcrumb-block">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"> Anasayfa </a></li>
+                            <li class="breadcrumb-item active"> İletişim </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="content-wrapper">
+    <section class="content-block pb-0">
+        <div class="container">
+            <div class="contact-container">
+                <h6 class="content-title contact-title">BİZİMLE İLETİŞİME GEÇİN</h6>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- contact form -->
+                        <form action="/iletisim/index" method="post" id="contact_form" class="waituk_contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.ContactMessage.Name, new { @class = "form-control", placeholder = "Adınız",id="txtName" })
+                                        @Html.ValidationMessageFor(x => x.ContactMessage.Name)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.ContactMessage.Surname, new { @class = "form-control", placeholder = "Soyadınız", id = "txtSurname" })
+                                        @Html.ValidationMessageFor(x => x.ContactMessage.Surname)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.ContactMessage.Subject, new { @class = "form-control", placeholder = "Konu", id = "txtSubject" })
+                                        @Html.ValidationMessageFor(x => x.ContactMessage.Subject)
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(x => x.ContactMessage.Message, new { @class = "form-control", placeholder = "Mesajınız", rows = "4", id = "txtMessage" })
+                                @Html.ValidationMessageFor(x => x.ContactMessage.Message)
+
+                            </div>
+                            <div class="btn-container">
+
+                                <button id="btn_sent" class="btn btn-primary btn-arrow">GÖNDER</button>
+                                <p id="error_message"> </p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-xl-5 offset-xl-1">
+                        <div class="info-slot">
+                            <div class="icon"><span class="custom-icon-map-marker"></span></div>
+                            <div class="text">
+                                <address>
+                                    Akarca Mahallesi
+                                    <br>Mustafa Kemal Bulvarı 823. Sokak
+                                    <br>48300 Fethiye/Muğla
+                                </address>
+                            </div>
+                        </div>
+                        <div class="info-slot">
+                            <div class="icon"><span class="custom-icon-headset"></span></div>
+                            <div class="text">
+                                <ul class="content-list contact-list">
+                                    <li><span class="label-text">TELEFON</span> <a href="tel:+902526140331">+90(252) 614 0331</a></li>
+                                    <li><span class="label-text"></span> <a href="tel:+902526140347">+90(252) 614 0347</a></li>
+                                    <li><span class="label-text">FAX</span> <a href="tel:+902526140339">+90(252) 614 0339</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="info-slot">
+                            <div class="icon"><span class="custom-icon-message"></span></div>
+                            <div class="text">
+                                <ul class="content-list contact-list">
+                                    <li><a href="mailto:support@roxine-online">iletisim@ozyer.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="map-holder embed-responsive-21by9 grayscaled-map">
+        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12805.033731219448!2d29.122138!3d36.644233!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7a35ca1f89e8dc0f!2s%C3%96zyer%20Grup!5e0!3m2!1str!2str!4v1629101604114!5m2!1str!2str" height="450" style="border:0"></iframe>
+    </div>
+    <aside class="content-block">
+        <div class="container">
+            <div class="logo-container">
+                <div class="owl-carousel logo-slide" id="waituk-owl-slide-4">
+                    <div class="slide-item">
+                        <img src="/img/logo/1.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/2.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/3.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/4.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/5.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/6.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/7.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/8.jpg" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/9.jpg" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/10.jpg" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/11.jpg" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/12.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/13.jpg" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/14.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/15.png" alt="images description">
+                    </div>
+                    <div class="slide-item">
+                        <img src="/img/logo/16.png" alt="images description">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var succesMessage = '@TempData["SuccessMessage"]';
+            if (succesMessage.length > 0) {
+                $("#txtName").val("");
+                $("#txtSurname").val("");
+                $("#txtSubject").val("");
+                $("#txtMessage").val("");
+                alert("Mesajınız başarıyla gönderildi.");
+
+            }
+        })
+    </script>
+
+}

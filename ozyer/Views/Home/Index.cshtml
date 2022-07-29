@@ -1,0 +1,173 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<main>
+    <!-- visual/banner of the page -->
+    <div class="banner banner-home">
+        <!-- revolution slider starts -->
+        <div id="rev_slider_279_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" style="margin:0px auto;background-color:#fff;padding:0px;margin-top:0px;margin-bottom:0px;">
+            <div id="rev_slider_70_1" class="rev_slider fullscreenabanner" style="display:none;" data-version="5.1.4">
+                <ul>
+                    <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+                        <!-- main image for revolution slider -->
+                        <img src="/img/slider.png" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+                    </li>
+                    <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+                        <!-- main image for revolution slider -->
+                        <img src="/img/slider3.png" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+                    </li>
+                    <li class="slider4-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+                        <!-- main image for revolution slider -->
+                        <img src="/img/slider.png" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--/visual/banner of the page -->
+    <!-- main content wrapper -->
+    <div class="content-wrapper">
+        <section class="content-block">
+            <div class="container">
+                <div class="row multiple-row v-align-row">
+                    @foreach (var item in Model.BlogList)
+                    {
+                        <div onclick="window.location.href = '/blog/@item.FriendlyUrl'" style="cursor:pointer" class="col-md-6 col-lg-4 blogClassStyle">
+                            <div class="col-wrap">
+                                <div class="post-grid">
+                                    <div class="img-block post-img">
+                                        <img src="@item.Photo" alt="images">
+                                    </div>
+                                    <div style="min-height:220px" class="post-text-block bg-gray-light">
+                                        <h3 class="content-title mb-0">@item.Name.</h3>
+                                        <a href="/blog/@item.FriendlyUrl" class="content-sub-title">@item.ShortDescription</a>
+                                        <div class="post-meta clearfix">
+                                            <div class="post-link-holder">
+                                                <a href="/blog/@item.FriendlyUrl">Devamı.. <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </section>
+        <section class="content-block pt-0">
+            <div class="container">
+                <div class="demo-wrapper">
+                    <h3 class="text-center element-heading">Şirketlerimiz</h3>
+                    <div class="logo-container">
+                        <div class="owl-carousel logo-slide" id="waituk-owl-slide-4">
+                            @foreach (var item in Model.workPartnerList)
+                            {
+                                <div class="slide-item">
+                                    <a href="/projeler/@item.FriendlyUrl"><img src="@item.Logo" alt="@item.Name" title="@item.Name"></a>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content-block information-block p-0 parallax" data-stellar-background-ratio="0.55">
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (var sector in Model.SectorList.Where(x => x.IsPassive == false).ToList())
+                    {
+                        <div class="info-block info-block-v2 block-1 col-sm-6 col-lg-3 text-center">
+                            <div class="icon">
+                                <img src="@sector.Icon" alt="planning">
+                            </div>
+                            <h3 class="block-title">@sector.Name</h3>
+                            <p>
+                                @sector.Description
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <section class="content-block bg-white">
+            <div class="container">
+                <div class="block-heading text-center bottom-space">
+                    <h3 class="content-title">BÜNYEMİZDE BULUNAN ŞİRKETLERİMİZ</h3>
+                    <h2 class="block-main-heading text-black">İŞTİRAKLAR</h2>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.ParticipationsGroupsList)
+                    {
+                        <div class="col-md-4">
+                            <div class="team-box caption-fade-up">
+                                <div class="img-block imgHeight">
+                                    <img src="@item.Logo" alt="images description">
+                                </div>
+                                <figure>
+                                    <figcaption class="team-des-v2">
+                                        <span class="sub">@item.Profession</span>
+                                        <strong class="content-title name">@item.Name</strong>
+                                        @*<p>@item.Description</p>*@
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </section>
+        <section class="content-block consult-block bg-primary">
+            <div class="container">
+                <div class="inner-wrapper text-center">
+                    <h3 class="block-top-heading text-white">BİZE ULAŞIN</h3>
+                    <h2 class="bottom-m-space text-white">İş başvurusu ve fikir ortaklığı için</h2>
+                    <div class="btn-container">
+                        <a href="/iletisim/index" class="btn btn-small-font btn-trans-white">GÖNDER</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content-block bg-white">
+            <div class="container">
+                <h3 class="text-center element-heading StyleH3">Hakkımızda</h3>
+                <div class="tab-container tab-center-container fontStyle1">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tab-text-nav" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tab5" role="tab">Vizyon</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab6" role="tab">Misyon</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab7" role="tab">Kurumsal Değer</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="top-m-space tab-content">
+                        <div class="tab-pane fade show active" id="tab5" role="tabpanel">
+                            <p>@Model.Setting.Vision</p>
+                        </div>
+                        <div class="tab-pane fade" id="tab6" role="tabpanel">
+                            <p>@Model.Setting.Mission</p>
+                        </div>
+                        <div class="tab-pane fade" id="tab7" role="tabpanel">
+                            <p>@Model.Setting.CorporateValue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--/main content wrapper -->
+</main>

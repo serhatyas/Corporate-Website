@@ -1,0 +1,39 @@
+﻿@model ozyer.Areas.admin.Model.Users
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <form action="/admin/users/create" method="post" class="col-md-12">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.NameSurname)
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>Mail</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control",type="email" })
+                @Html.ValidationMessageFor(x => x.Mail)
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>Şifre</label>
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control",type="password" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" type="submit">Kaydet</button> 
+            </div>
+        </div>
+    </form>
+
+
+</div>

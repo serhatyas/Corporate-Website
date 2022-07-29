@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+@model ozyer.Models.ServiceModel
+<div class="container-fluid">
+
+    <form action="/admin/Participation/update" method="post" enctype="multipart/form-data" class="col-md-12">
+        @Html.HiddenFor(x => x.Participations.Id)
+        <div class="row">
+
+            <div class="col-8">
+                <div class="form-group">
+                    <label>İştirak Açıklaması</label>
+                    @Html.TextAreaFor(x => x.Participations.Description, new { @class = "form-control", id = "editor", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.Description)
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label>İştirak Adı</label>
+                    @Html.TextBoxFor(x => x.Participations.Name, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.Name)
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    @Html.TextBoxFor(x => x.Participations.Phone, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.Phone)
+                </div>
+                <div class="form-group">
+                    <label>Website</label>
+                    @Html.TextBoxFor(x => x.Participations.Website, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.Phone)
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    @Html.TextAreaFor(x => x.Participations.Address, new { @class = "form-control", rows = "4" })
+                    @Html.ValidationMessageFor(x => x.Participations.Address)
+                </div>
+                <div class="form-group">
+                    <label>Sektör</label>
+                    @Html.DropDownListFor(x => x.Participations.SectorId, new SelectList(Model.SectorList, "Id", "Name"), new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.SectorId)
+                </div>
+                <div class="form-group">
+                    <label>Grup Adı</label>
+                    @Html.DropDownListFor(x => x.Participations.ParticipationsGroupId, new SelectList(Model.ParticipationsGroupsList, "Id", "Name"), new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Participations.Phone)
+                </div>
+                <div class="form-group">
+                    <label>Logo</label>
+                    <input type="file" name="file" class="form-control" value="" />
+                </div>
+                <div class="col-12">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </form>
+
+
+</div>
+
+@section scripts {
+    <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('editor', {
+            toolbar: 'Full',
+            toolbar_Full:
+                [
+                    { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                    { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                    { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'] },
+                    {
+                        name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                            'HiddenField']
+                    },
+                    '/',
+                    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+                    {
+                        name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv',
+                            '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+                    },
+                    { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                    { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'] },
+                    '/',
+                    { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                    { name: 'colors', items: ['TextColor', 'BGColor'] },
+                    { name: 'tools', items: ['Maximize', 'ShowBlocks', '-', 'About'] }
+                ],
+            extraPlugins: 'iframe',
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            filebrowserBrowseUrl: 'assets/plugins/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: 'assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+        });
+
+
+    </script>
+
+
+}

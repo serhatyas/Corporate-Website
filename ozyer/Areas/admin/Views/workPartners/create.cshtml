@@ -1,0 +1,123 @@
+﻿@model ozyer.Models.ServiceModel
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <form enctype="multipart/form-data" action="/admin/workpartners/create" method="post" class="col-md-12">
+        <div class="row">
+
+            <div class="col-8">
+                <div class="form-group">
+                    <label>Çalışma Ortağı Açıklaması</label>
+                    @Html.TextAreaFor(x => x.workPartners.Description, new { @class = "form-control", id = "editor", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.Description)
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Çalışma Ortağı Adı</label>
+                    @Html.TextBoxFor(x => x.workPartners.Name, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.Name)
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    @Html.TextBoxFor(x => x.workPartners.Phone, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.Phone)
+                </div>
+                <div class="form-group">
+                    <label>WebSite</label>
+                    @Html.TextBoxFor(x => x.workPartners.WebSite, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.WebSite)
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    @Html.TextBoxFor(x => x.workPartners.Address, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.Address)
+                </div>
+                <div class="form-group">
+                    <label>Sektör</label>
+                    @Html.DropDownListFor(x => x.workPartners.SectorId, new SelectList(Model.SectorList,
+                   "Id", "Name"), new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.SectorId)
+                </div>
+                <div class="form-group">
+                    <label>İştirak</label>
+                    @Html.DropDownListFor(x => x.workPartners.ParticipationsGroupId, new SelectList(Model.ParticipationsGroupsList,
+                   "Id", "Name"), new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(x => x.workPartners.ParticipationsGroupId)
+                </div>
+                @*<div class="form-group">
+            <label>Adres</label>
+            @Html.DropDownListFor(x => x.workPartners.SectorId, new SelectList(Model.SectorList, "Id", "Name"), new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(x => x.workPartners.SectorId)
+        </div>*@
+                <div class="form-group">
+                    <label>Logo</label>
+                    <input type="file" name="Logo" class="form-control" value="" />
+                </div>
+                <div class="form-group">
+                    <label>Resim</label>
+                    <input type="file" name="Images" class="form-control" value="" />
+                </div>
+                <div class="form-group">
+                    <label>Galeri</label>
+                    <input type="file" name="gallery" multiple class="form-control" value="" />
+                </div>
+                <div class="col-12">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </form>
+
+
+</div>
+
+@section scripts {
+    <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('editor', {
+            toolbar: 'Full',
+            toolbar_Full:
+                [
+                    { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                    { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                    { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'SpellChecker', 'Scayt'] },
+                    {
+                        name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                            'HiddenField']
+                    },
+                    '/',
+                    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+                    {
+                        name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv',
+                            '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+                    },
+                    { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                    { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'] },
+                    '/',
+                    { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                    { name: 'colors', items: ['TextColor', 'BGColor'] },
+                    { name: 'tools', items: ['Maximize', 'ShowBlocks', '-', 'About'] }
+                ],
+            extraPlugins: 'iframe',
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            filebrowserBrowseUrl: 'assets/plugins/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: 'assets/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+        });
+
+
+    </script>
+
+
+}

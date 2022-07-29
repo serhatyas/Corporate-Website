@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+@model ozyer.Areas.admin.Model.Sectors
+
+<h2>Sektör Güncelle</h2>
+<form enctype="multipart/form-data" action="/admin/sector/update" method="post">
+    @Html.HiddenFor(x=>x.Id)
+    <div class="form-group mb-50">
+        <label class="text-bold-600" for="exampleInputEmail1">Sektör Adı</label>
+        @Html.TextAreaFor(x => x.Name, new { @class = "form-control", placeholder = "Sektör Adı Giriniz", Type = "sectorName" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="form-group">
+        <label class="text-bold-600" for="exampleInputPassword1">Açıklama</label>
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", placeholder = "Açıklama Ekleyiniz", Type = "descriptionName" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+    <div class="form-group">
+        <label class="text-bold-600" for="exampleInputPassword1">Icon Seçiniz</label>
+        <input type="file" name="file" id="uploadfile" />
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary glow  position-relative">Kaydet<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
+
+    </div>
+    <span style="color:red">@ViewBag.Hata</span>
+</form>

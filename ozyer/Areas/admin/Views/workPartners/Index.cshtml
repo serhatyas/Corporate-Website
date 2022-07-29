@@ -1,0 +1,67 @@
+﻿@model ozyer.Models.ServiceModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/tables/datatable/datatables.min.css">
+}
+
+<!-- Column selectors with Export Options and print table -->
+<section id="column-selectors">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">İş Ortakları Listesi</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body card-dashboard">
+                        <div class="d-flex justify-content-end m-r-10">
+                            <a href="/admin/workpartners/create" class="btn btn-success pull-right">Yeni İş Ortağı ekle</a>
+
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped dataex-html5-selectors">
+                                <thead>
+                                    <tr>
+                                        <th>Proje Adı</th>
+                                        <th>Sektör</th>
+                                        <th>İştirak</th>
+                                        <th colspan="2">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.workPartnerList)
+                                    {
+                                        
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@item.Sectors.Name</td>
+                                            <td>@item.ParticipationsGroups.Name</td>
+                                            <td><a class="btn btn-primary" href="/admin/workpartners/update/@item.Id">Düzenle</a></td>
+                                            <td><button class="btn btn-danger btnDelete" data-id="@item.Id" data-url="/admin/workpartners/delete">Sil</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                                <tfoot>
+                                    <tr>
+                                        <th>Proje Adı</th>
+                                        <th>Sektör</th>
+                                        <th>İştirak</th>
+                                        <th colspan="2">İşlemler</th>   
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

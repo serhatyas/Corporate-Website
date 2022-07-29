@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27e13f6b207041d0aa47c573e1f352a2" Name="Diagram1">
+        <EntityTypeShape EntityType="ozyerDBModel.Blog" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.ContactMessages" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Corporate" Width="1.5" PointX="2.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Pages" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Participations" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.ParticipationSectorCategories" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.ParticipationSectorWorkFile" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.ParticipationSectorWorks" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.ParticipationsGroups" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Sectors" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Settings" Width="1.5" PointX="4.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Sliders" Width="1.5" PointX="6.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.Users" Width="1.5" PointX="8.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.WorkPartnerFiles" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ozyerDBModel.WorkPartners" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="ozyerDBModel.FK_Participations_ParticipationsGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_Participations_Sectors" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_ParticipationSectorWorks_Participation" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_ParticipationSectorWorks_ParticipationSectorCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_ParticipationSectorWorkFile_ParticipationSectorWorks" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_ParticipationSectorWorkFile_ParticipationSectorWorks1" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_WorkPartners_ParticipationsGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="ozyerDBModel.FK_WorkPartners_Sectors" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

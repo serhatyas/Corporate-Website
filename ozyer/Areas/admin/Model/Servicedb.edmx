@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ozyerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ShortDescription" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="300" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Author" Type="nvarchar" MaxLength="200" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsPassive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContactMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="200" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Corporate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Queue" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" />
+          <Property Name="PageContent" Type="nvarchar(max)" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="LastUpdateDateTime" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Participations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectorId" Type="int" />
+          <Property Name="ParticipationsGroupId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipationId" Type="int" />
+          <Property Name="SectorId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="500" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorWorkFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipationSectorWorkId" Type="int" />
+          <Property Name="Path" Type="nvarchar" MaxLength="500" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorWorks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipationId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="ParticipationSectorCategoryId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ParticipationsGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Profession" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsHide" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sectors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="200" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Mission" Type="nvarchar(max)" />
+          <Property Name="Vision" Type="nvarchar(max)" />
+          <Property Name="CorporateValue" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkHours" Type="nvarchar" MaxLength="500" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Instagram" Type="nvarchar" MaxLength="1000" />
+          <Property Name="LinkedIn" Type="nvarchar" MaxLength="1000" />
+          <Property Name="GoogleMaps" Type="nvarchar(max)" />
+          <Property Name="HeadScripts" Type="nvarchar(max)" />
+          <Property Name="FooterScripts" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Queue" Type="int" />
+          <Property Name="SmallText" Type="nvarchar" MaxLength="200" />
+          <Property Name="BigText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ButtonText" Type="nvarchar" MaxLength="200" />
+          <Property Name="ButtonLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSurname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IsPassive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkPartnerFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkPartnerId" Type="int" />
+          <Property Name="Path" Type="nvarchar" MaxLength="150" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsPassive" Type="bit" />
+        </EntityType>
+        <EntityType Name="WorkPartners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectorId" Type="int" />
+          <Property Name="ParticipationsGroupId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="150" />
+          <Property Name="Image" Type="nvarchar" MaxLength="150" />
+          <Property Name="FriendlyUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsPassive" Type="bit" />
+          <Property Name="IsGroupCompany" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Participations_ParticipationsGroups">
+          <End Role="ParticipationsGroups" Type="Self.ParticipationsGroups" Multiplicity="0..1" />
+          <End Role="Participations" Type="Self.Participations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationsGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participations">
+              <PropertyRef Name="ParticipationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participations_Sectors">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="0..1" />
+          <End Role="Participations" Type="Self.Participations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participations">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks">
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorkFile" Type="Self.ParticipationSectorWorkFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorWorks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorkFile">
+              <PropertyRef Name="ParticipationSectorWorkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks1">
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorkFile" Type="Self.ParticipationSectorWorkFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorWorks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorkFile">
+              <PropertyRef Name="ParticipationSectorWorkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorks_Participation">
+          <End Role="Participations" Type="Self.Participations" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorks">
+              <PropertyRef Name="ParticipationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorks_ParticipationSectorCategories">
+          <End Role="ParticipationSectorCategories" Type="Self.ParticipationSectorCategories" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorks">
+              <PropertyRef Name="ParticipationSectorCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkPartners_ParticipationsGroups">
+          <End Role="ParticipationsGroups" Type="Self.ParticipationsGroups" Multiplicity="0..1" />
+          <End Role="WorkPartners" Type="Self.WorkPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationsGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkPartners">
+              <PropertyRef Name="ParticipationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkPartners_Sectors">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="0..1" />
+          <End Role="WorkPartners" Type="Self.WorkPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkPartners">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ozyerDBModelStoreContainer">
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactMessages" EntityType="Self.ContactMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corporate" EntityType="Self.Corporate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participations" EntityType="Self.Participations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipationSectorCategories" EntityType="Self.ParticipationSectorCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipationSectorWorkFile" EntityType="Self.ParticipationSectorWorkFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipationSectorWorks" EntityType="Self.ParticipationSectorWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipationsGroups" EntityType="Self.ParticipationsGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sectors" EntityType="Self.Sectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkPartnerFiles" EntityType="Self.WorkPartnerFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkPartners" EntityType="Self.WorkPartners" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Participations_ParticipationsGroups" Association="Self.FK_Participations_ParticipationsGroups">
+            <End Role="ParticipationsGroups" EntitySet="ParticipationsGroups" />
+            <End Role="Participations" EntitySet="Participations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participations_Sectors" Association="Self.FK_Participations_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="Participations" EntitySet="Participations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks" Association="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks">
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+            <End Role="ParticipationSectorWorkFile" EntitySet="ParticipationSectorWorkFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks1" Association="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks1">
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+            <End Role="ParticipationSectorWorkFile" EntitySet="ParticipationSectorWorkFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorks_Participation" Association="Self.FK_ParticipationSectorWorks_Participation">
+            <End Role="Participations" EntitySet="Participations" />
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorks_ParticipationSectorCategories" Association="Self.FK_ParticipationSectorWorks_ParticipationSectorCategories">
+            <End Role="ParticipationSectorCategories" EntitySet="ParticipationSectorCategories" />
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkPartners_ParticipationsGroups" Association="Self.FK_WorkPartners_ParticipationsGroups">
+            <End Role="ParticipationsGroups" EntitySet="ParticipationsGroups" />
+            <End Role="WorkPartners" EntitySet="WorkPartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkPartners_Sectors" Association="Self.FK_WorkPartners_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="WorkPartners" EntitySet="WorkPartners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ozyerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Author" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsPassive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ContactMessages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Corporate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Queue" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Participations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectorId" Type="Int32" />
+          <Property Name="ParticipationsGroupId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="ParticipationsGroups" Relationship="Self.FK_Participations_ParticipationsGroups" FromRole="Participations" ToRole="ParticipationsGroups" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK_Participations_Sectors" FromRole="Participations" ToRole="Sectors" />
+          <NavigationProperty Name="ParticipationSectorWorks" Relationship="Self.FK_ParticipationSectorWorks_Participation" FromRole="Participations" ToRole="ParticipationSectorWorks" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipationId" Type="Int32" />
+          <Property Name="SectorId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ParticipationSectorWorks" Relationship="Self.FK_ParticipationSectorWorks_ParticipationSectorCategories" FromRole="ParticipationSectorCategories" ToRole="ParticipationSectorWorks" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorWorkFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipationSectorWorkId" Type="Int32" />
+          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ParticipationSectorWorks" Relationship="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks" FromRole="ParticipationSectorWorkFile" ToRole="ParticipationSectorWorks" />
+          <NavigationProperty Name="ParticipationSectorWorks1" Relationship="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks1" FromRole="ParticipationSectorWorkFile" ToRole="ParticipationSectorWorks" />
+        </EntityType>
+        <EntityType Name="ParticipationSectorWorks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipationId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ParticipationSectorCategoryId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Participations" Relationship="Self.FK_ParticipationSectorWorks_Participation" FromRole="ParticipationSectorWorks" ToRole="Participations" />
+          <NavigationProperty Name="ParticipationSectorCategories" Relationship="Self.FK_ParticipationSectorWorks_ParticipationSectorCategories" FromRole="ParticipationSectorWorks" ToRole="ParticipationSectorCategories" />
+          <NavigationProperty Name="ParticipationSectorWorkFile" Relationship="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks" FromRole="ParticipationSectorWorks" ToRole="ParticipationSectorWorkFile" />
+          <NavigationProperty Name="ParticipationSectorWorkFile1" Relationship="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks1" FromRole="ParticipationSectorWorks" ToRole="ParticipationSectorWorkFile" />
+        </EntityType>
+        <EntityType Name="ParticipationsGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Profession" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsHide" Type="Boolean" />
+          <NavigationProperty Name="Participations" Relationship="Self.FK_Participations_ParticipationsGroups" FromRole="ParticipationsGroups" ToRole="Participations" />
+          <NavigationProperty Name="WorkPartners" Relationship="Self.FK_WorkPartners_ParticipationsGroups" FromRole="ParticipationsGroups" ToRole="WorkPartners" />
+        </EntityType>
+        <EntityType Name="Sectors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <NavigationProperty Name="Participations" Relationship="Self.FK_Participations_Sectors" FromRole="Sectors" ToRole="Participations" />
+          <NavigationProperty Name="WorkPartners" Relationship="Self.FK_WorkPartners_Sectors" FromRole="Sectors" ToRole="WorkPartners" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Mission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkHours" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Twitter" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Instagram" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedIn" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="GoogleMaps" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HeadScripts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FooterScripts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Queue" Type="Int32" />
+          <Property Name="SmallText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BigText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkPartnerFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkPartnerId" Type="Int32" />
+          <Property Name="Path" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsPassive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="WorkPartners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectorId" Type="Int32" />
+          <Property Name="ParticipationsGroupId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Logo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsPassive" Type="Boolean" />
+          <Property Name="IsGroupCompany" Type="Boolean" />
+          <NavigationProperty Name="ParticipationsGroups" Relationship="Self.FK_WorkPartners_ParticipationsGroups" FromRole="WorkPartners" ToRole="ParticipationsGroups" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK_WorkPartners_Sectors" FromRole="WorkPartners" ToRole="Sectors" />
+        </EntityType>
+        <Association Name="FK_Participations_ParticipationsGroups">
+          <End Role="ParticipationsGroups" Type="Self.ParticipationsGroups" Multiplicity="0..1" />
+          <End Role="Participations" Type="Self.Participations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationsGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participations">
+              <PropertyRef Name="ParticipationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participations_Sectors">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="0..1" />
+          <End Role="Participations" Type="Self.Participations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participations">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorks_Participation">
+          <End Role="Participations" Type="Self.Participations" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorks">
+              <PropertyRef Name="ParticipationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorks_ParticipationSectorCategories">
+          <End Role="ParticipationSectorCategories" Type="Self.ParticipationSectorCategories" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorks">
+              <PropertyRef Name="ParticipationSectorCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks">
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorkFile" Type="Self.ParticipationSectorWorkFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorWorks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorkFile">
+              <PropertyRef Name="ParticipationSectorWorkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks1">
+          <End Role="ParticipationSectorWorks" Type="Self.ParticipationSectorWorks" Multiplicity="0..1" />
+          <End Role="ParticipationSectorWorkFile" Type="Self.ParticipationSectorWorkFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationSectorWorks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipationSectorWorkFile">
+              <PropertyRef Name="ParticipationSectorWorkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkPartners_ParticipationsGroups">
+          <End Role="ParticipationsGroups" Type="Self.ParticipationsGroups" Multiplicity="0..1" />
+          <End Role="WorkPartners" Type="Self.WorkPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipationsGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkPartners">
+              <PropertyRef Name="ParticipationsGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkPartners_Sectors">
+          <End Role="Sectors" Type="Self.Sectors" Multiplicity="0..1" />
+          <End Role="WorkPartners" Type="Self.WorkPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sectors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkPartners">
+              <PropertyRef Name="SectorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiceDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blog" EntityType="Self.Blog" />
+          <EntitySet Name="ContactMessages" EntityType="Self.ContactMessages" />
+          <EntitySet Name="Corporate" EntityType="Self.Corporate" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" />
+          <EntitySet Name="Participations" EntityType="Self.Participations" />
+          <EntitySet Name="ParticipationSectorCategories" EntityType="Self.ParticipationSectorCategories" />
+          <EntitySet Name="ParticipationSectorWorkFile" EntityType="Self.ParticipationSectorWorkFile" />
+          <EntitySet Name="ParticipationSectorWorks" EntityType="Self.ParticipationSectorWorks" />
+          <EntitySet Name="ParticipationsGroups" EntityType="Self.ParticipationsGroups" />
+          <EntitySet Name="Sectors" EntityType="Self.Sectors" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" />
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WorkPartnerFiles" EntityType="Self.WorkPartnerFiles" />
+          <EntitySet Name="WorkPartners" EntityType="Self.WorkPartners" />
+          <AssociationSet Name="FK_Participations_ParticipationsGroups" Association="Self.FK_Participations_ParticipationsGroups">
+            <End Role="ParticipationsGroups" EntitySet="ParticipationsGroups" />
+            <End Role="Participations" EntitySet="Participations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participations_Sectors" Association="Self.FK_Participations_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="Participations" EntitySet="Participations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorks_Participation" Association="Self.FK_ParticipationSectorWorks_Participation">
+            <End Role="Participations" EntitySet="Participations" />
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorks_ParticipationSectorCategories" Association="Self.FK_ParticipationSectorWorks_ParticipationSectorCategories">
+            <End Role="ParticipationSectorCategories" EntitySet="ParticipationSectorCategories" />
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks" Association="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks">
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+            <End Role="ParticipationSectorWorkFile" EntitySet="ParticipationSectorWorkFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParticipationSectorWorkFile_ParticipationSectorWorks1" Association="Self.FK_ParticipationSectorWorkFile_ParticipationSectorWorks1">
+            <End Role="ParticipationSectorWorks" EntitySet="ParticipationSectorWorks" />
+            <End Role="ParticipationSectorWorkFile" EntitySet="ParticipationSectorWorkFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkPartners_ParticipationsGroups" Association="Self.FK_WorkPartners_ParticipationsGroups">
+            <End Role="ParticipationsGroups" EntitySet="ParticipationsGroups" />
+            <End Role="WorkPartners" EntitySet="WorkPartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkPartners_Sectors" Association="Self.FK_WorkPartners_Sectors">
+            <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="WorkPartners" EntitySet="WorkPartners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ozyerDBModelStoreContainer" CdmEntityContainer="ServiceDB">
+          <EntitySetMapping Name="Blog">
+            <EntityTypeMapping TypeName="ozyerDBModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactMessages">
+            <EntityTypeMapping TypeName="ozyerDBModel.ContactMessages">
+              <MappingFragment StoreEntitySet="ContactMessages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Corporate">
+            <EntityTypeMapping TypeName="ozyerDBModel.Corporate">
+              <MappingFragment StoreEntitySet="Corporate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Queue" ColumnName="Queue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="ozyerDBModel.Pages">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="LastUpdateDateTime" ColumnName="LastUpdateDateTime" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participations">
+            <EntityTypeMapping TypeName="ozyerDBModel.Participations">
+              <MappingFragment StoreEntitySet="Participations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="ParticipationsGroupId" ColumnName="ParticipationsGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipationSectorCategories">
+            <EntityTypeMapping TypeName="ozyerDBModel.ParticipationSectorCategories">
+              <MappingFragment StoreEntitySet="ParticipationSectorCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParticipationId" ColumnName="ParticipationId" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipationSectorWorkFile">
+            <EntityTypeMapping TypeName="ozyerDBModel.ParticipationSectorWorkFile">
+              <MappingFragment StoreEntitySet="ParticipationSectorWorkFile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParticipationSectorWorkId" ColumnName="ParticipationSectorWorkId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipationSectorWorks">
+            <EntityTypeMapping TypeName="ozyerDBModel.ParticipationSectorWorks">
+              <MappingFragment StoreEntitySet="ParticipationSectorWorks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParticipationId" ColumnName="ParticipationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParticipationSectorCategoryId" ColumnName="ParticipationSectorCategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipationsGroups">
+            <EntityTypeMapping TypeName="ozyerDBModel.ParticipationsGroups">
+              <MappingFragment StoreEntitySet="ParticipationsGroups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sectors">
+            <EntityTypeMapping TypeName="ozyerDBModel.Sectors">
+              <MappingFragment StoreEntitySet="Sectors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="ozyerDBModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Mission" ColumnName="Mission" />
+                <ScalarProperty Name="Vision" ColumnName="Vision" />
+                <ScalarProperty Name="CorporateValue" ColumnName="CorporateValue" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="WorkHours" ColumnName="WorkHours" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+                <ScalarProperty Name="LinkedIn" ColumnName="LinkedIn" />
+                <ScalarProperty Name="GoogleMaps" ColumnName="GoogleMaps" />
+                <ScalarProperty Name="HeadScripts" ColumnName="HeadScripts" />
+                <ScalarProperty Name="FooterScripts" ColumnName="FooterScripts" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="ozyerDBModel.Sliders">
+              <MappingFragment StoreEntitySet="Sliders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Queue" ColumnName="Queue" />
+                <ScalarProperty Name="SmallText" ColumnName="SmallText" />
+                <ScalarProperty Name="BigText" ColumnName="BigText" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+                <ScalarProperty Name="ButtonLink" ColumnName="ButtonLink" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ozyerDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkPartnerFiles">
+            <EntityTypeMapping TypeName="ozyerDBModel.WorkPartnerFiles">
+              <MappingFragment StoreEntitySet="WorkPartnerFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkPartnerId" ColumnName="WorkPartnerId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkPartners">
+            <EntityTypeMapping TypeName="ozyerDBModel.WorkPartners">
+              <MappingFragment StoreEntitySet="WorkPartners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SectorId" ColumnName="SectorId" />
+                <ScalarProperty Name="ParticipationsGroupId" ColumnName="ParticipationsGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="IsPassive" ColumnName="IsPassive" />
+                <ScalarProperty Name="IsGroupCompany" ColumnName="IsGroupCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
